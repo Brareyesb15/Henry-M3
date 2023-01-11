@@ -1,27 +1,23 @@
-const process = require("process"); // nativo de node
+const process = require("process");
 const commands = require("./commands/index.js");
 
-function print(output){
+
+
+const print = (output) => {
   process.stdout.write(output)
-  process.stdout.write("\nprompt > ")
+  process.stdout.write("\nprompt > ") // n es salto de linea
 }
-
 function bash() {
+ 
   process.stdout.write("prompt > ")
-  process.stdin.on("data", (data)=>{
+  process.stdin.on("data", (data) => {
     const args = data.toString().trim().split(" ")
-    var cmd = args.shift() // cmd -> 'cd'    args -> [ 'commands', 'otra' ] <- join " "  'commands otra'
-    // console.log("--->", args)
-    // if(commands[cmd]){
-    if(commands.hasOwnProperty(cmd)){
-      commands[cmd](print, args.join(" ")) // commands.pwd(print, 'commands otra' )
-    } else {
-      print(`command not found: ${cmd}`)
-    }
-    // print(args)
-  })
+    var cmd = args.shift()  
+    commands[cmd] ? commands[cmd](print, args.join(" ")) : print (`command not found: ${cmd}`)}
 
-}
+
+  )}
+
 
 bash();
 module.exports = {

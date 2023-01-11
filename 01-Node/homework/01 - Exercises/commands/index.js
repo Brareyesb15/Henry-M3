@@ -18,6 +18,7 @@ function echo(print,args) {
 
 function ls(print) {
     fs.readdir(".", function(error,files) {
+
         if (error) throw new Error (error)
         print (files.join(" "))
     })
