@@ -1,8 +1,64 @@
 'use strict';
+
+
 /*----------------------------------------------------------------
 Promises Workshop: construye la libreria de ES6 promises, pledge.js
 ----------------------------------------------------------------*/
 // // TU CÓDIGO AQUÍ:
+
+function $Promise(executor) {
+ if (typeof executor !== "function") {throw new TypeError(/executor.+function/i)};
+
+ this._state = "pending";
+ this._handlerGroups = [];  
+
+ executor(this._internalResolve.bind(this),this._internalReject.bind(this))
+
+}
+
+$Promise.prototype._internalResolve = function(data){
+    if (this._state === "pending") {
+    this._state = "fulfilled";
+    this._value = data; 
+
+    this._callHandlers();
+}};
+
+$Promise.prototype._internalReject = function (data){
+    if (this._state === "pending"){
+    this._state = "rejected";
+    this._value = data
+    };
+    this._callHandlers();
+};
+
+$Promise.prototype._callHandlers = function () {
+
+    while(this._handlerGroups.length){
+        let uniqueHandler = this._handlerGroups.shift()
+        if (this._state === "fulfilled"){
+            uniqueHandler.successCb && uniqueHandler.successCb(this._value);}
+        else if (this._state === "rejected"){
+            uniqueHandler.errorCb && uniqueHandler.errorCb(this._value);}
+ }
+};
+
+$Promise.prototype.then = function ( successHandler,errorHandler) {
+    
+    this._handlerGroups.push({
+        successCb: typeof successHandler === "function" &&  successHandler,
+        errorCb : typeof  errorHandler === "function" && errorHandler});
+
+    if (this._state !== "pending") this._callHandlers()
+};
+
+$Promise.prototype.catch = function (successHandler,errorHandler) {
+
+    this.then(null, successHandler);
+}
+
+ 
+
 
 
 
