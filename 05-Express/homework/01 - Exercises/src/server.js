@@ -54,9 +54,72 @@ server.get("/posts", (req,res) => {
 
   else res.status(200).json(publications)
 
+ })
 
+ server.get("/posts/:author", (req,res) => { 
+  const {author} = req.params;
 
-  })
+  const autores = publications.filter((obj)=> obj.author === author);
+
+  if (autores.length === 0)res.status(404).json({error: "No existe ningun post del autor indicado"})
+  else res.status(200).json(autores)
+ })
+
+ server.put("/posts/:id", (req,res)=> {
+  const {id} = req.params;
+  const {title,contents} = req.body;
+  let impr = {}
+
+  if (!id && !title && !contents) res.status(404).json({error: "No se recibieron los parámetros necesarios para modificar la publicación"});
+
+  const arrayId = publications.filter((obj)=> obj.id === id);
+
+  if (arrayId.length === 0) res.status(404).json({error: "No se recibió el id correcto necesario para modificar la publicación"});
+
+  else actualiz = publications.forEach((obj) =>{
+    if (obj.id === id) {
+      obj.title = title;
+      obj.contents = contents;
+      impr = obj;
+    }})
+    res.status(200).json(impr)
+
+ })
+
+ server.delete('/posts/:id',(req,res)=>{
+  const {id} = req.params;
+
+  if (!id) res.status(404).json({error: "No se recibió el id de la publicación a eliminar"});
+
+  const arrayId = publications.filter((obj)=> obj.id === id);
+
+  if (arrayId.length !== 0) { publications.forEach((obj,index) =>{
+    if (obj.id === id) {
+      publications.splice(index,1)
+    }})
+    res.status(200).json({ success: true})}
+
+else res.status(404).json({error: "No se recibió el id correcto necesario para eliminar la publicación"});
+ })  
+
+ server.delete("/author/:name",(req,res)=>{
+  const {name} = req.params;
+  let borradas = []
+
+  if (!name) res.status(404).json({error: "No se recibió el nombre del autor"});
+
+  const arrayId2 = publications.filter((obj)=> obj.author === name);
+
+  if (arrayId2.length !== 0) { publications.forEach((obj,index) =>{
+    if (obj.author === name) {
+      borradas.push(obj);
+      publications.splice(index,1)
+
+    }})
+    res.status(200).json(borradas)}
+
+else res.status(404).json({error:"No se recibió el nombre correcto necesario para eliminar las publicaciones del autor"});
+ })
 
 
 //NO MODIFICAR EL CODIGO DE ABAJO. SE USA PARA EXPORTAR EL SERVIDOR Y CORRER LOS TESTS
