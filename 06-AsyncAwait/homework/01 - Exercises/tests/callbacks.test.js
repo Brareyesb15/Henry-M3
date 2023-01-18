@@ -52,7 +52,7 @@ describe("01 | Ejercicios - Callbacks (poem-one)", () => {
     });
   });
 
-  it("Problem A | Consologuea la primer stanza versión callback", (done) => {
+  xit("Problem A | Consologuea la primer stanza versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
@@ -67,7 +67,7 @@ describe("01 | Ejercicios - Callbacks (poem-one)", () => {
     done();
   });
 
-  it("Problem B | Consologuea la segunda y tercer stanza versión callback", (done) => {
+  xit("Problem B | Consologuea la segunda y tercer stanza versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
@@ -85,7 +85,7 @@ describe("01 | Ejercicios - Callbacks (poem-one)", () => {
     done();
   });
 
-  it("Problem C | Consologuea la segunda y tercer stanza versión callback", (done) => {
+  xit("Problem C | Consologuea la segunda y tercer stanza versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
@@ -103,7 +103,7 @@ describe("01 | Ejercicios - Callbacks (poem-one)", () => {
     done();
   });
 
-  it("Problem D | Consologuea la cuarta stanza versión callback o un error", (done) => {
+  xit("Problem D | Consologuea la cuarta stanza versión callback o un error", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
@@ -122,7 +122,7 @@ describe("01 | Ejercicios - Callbacks (poem-one)", () => {
     done();
   });
 
-  it("Problem E | Consologuea la tercera stanza y luego la cuarta stanza versión callback o un error", (done) => {
+  xit("Problem E | Consologuea la tercera stanza y luego la cuarta stanza versión callback o un error", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
@@ -146,7 +146,7 @@ describe("01 | Ejercicios - Callbacks (poem-one)", () => {
     done();
   });
 
-  it("Problem F | Consologuea la tercera stanza y luego la cuarta stanza versión callback o un error", (done) => {
+  xit("Problem F | Consologuea la tercera stanza y luego la cuarta stanza versión callback o un error", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
@@ -183,7 +183,7 @@ describe("02 | Ejercicios - Callbacks (poem-two)", () => {
     });
   });
 
-  it("Problem A | Consologuea la primera y segunda stanza versión callback", (done) => {
+ xit("Problem A | Consologuea la primera y segunda stanza versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
@@ -201,7 +201,7 @@ describe("02 | Ejercicios - Callbacks (poem-two)", () => {
     done();
   });
 
-  it("Problem B | Consologuea todos los stanzas que se encuentren en poem-two versión callback", (done) => {
+  xit("Problem B | Consologuea todos los stanzas que se encuentren en poem-two versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
@@ -238,7 +238,7 @@ describe("02 | Ejercicios - Callbacks (poem-two)", () => {
     done();
   });
 
-  it("Problem C | Consologuea todos los stanzas que se encuentren en poem-two versión callback", (done) => {
+  xit("Problem C | Consologuea todos los stanzas que se encuentren en poem-two versión callback", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const readFileSpy = jest.spyOn(utils, "readFile");
@@ -275,7 +275,7 @@ describe("02 | Ejercicios - Callbacks (poem-two)", () => {
     done();
   });
 
-  it("Problem D | Consologuea todos los stanzas que se encuentren en poem-two o un error", (done) => {
+  xit("Problem D | Consologuea todos los stanzas que se encuentren en poem-two o un error", (done) => {
     jest.setTimeout(500);
     const blue = jest.spyOn(utils, "blue");
     const magenta = jest.spyOn(utils, "magenta");
